@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "http": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "launchUrl": "",
+      "applicationUrl": "http://localhost:5001",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionStrings:Database": "User ID=postgres;Password=test1234;Host=localhost;Port=5432;Database=auth;Pooling=true;",
+        "Auth:JwtSettings:SecurityKey": "STC.Auth",
+        "Auth:JwtSettings:Issuer": "STC.Auth",
+        "Auth:JwtSettings:Audience": "STC.Auth",
+        "Auth:JwtSettings:TokenExpiryTimeAsMinute": 1440,
+        "Auth:JwtSettings:RefreshTokenExpiryTimeAsMinute": 43200
+      }
+    }
+  }
+}

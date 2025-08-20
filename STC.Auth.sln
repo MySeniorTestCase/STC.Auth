@@ -8,9 +8,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{B793996F-3C28-4369-9D35-58939215AE35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STC.Domain", "src\Core\STC.Domain\STC.Domain.csproj", "{F68A27E1-4728-4700-9CB8-F8CF6F0D6E61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STC.Auth.Domain", "src\Core\STC.Auth.Domain\STC.Auth.Domain.csproj", "{F68A27E1-4728-4700-9CB8-F8CF6F0D6E61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STC.Application", "src\Core\STC.Application\STC.Application.csproj", "{22A82D08-2AA8-4767-B15D-D6EC32BBD502}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STC.Auth.Application", "src\Core\STC.Auth.Application\STC.Auth.Application.csproj", "{22A82D08-2AA8-4767-B15D-D6EC32BBD502}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "submodules", "submodules", "{AB322852-FAB3-4ABA-B63E-8B2219F48277}"
 EndProject
@@ -18,9 +18,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STC.Shared.Utilities.Pagina
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STC.Shared.Utilities.Response", "STC.Shared\src\Utilities\STC.Shared.Utilities.Response\STC.Shared.Utilities.Response.csproj", "{23D9AE36-B3D4-45D5-8FEC-D02D53270DA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STC.Infrastructure", "src\Infrastructure\STC.Infrastructure\STC.Infrastructure.csproj", "{36046093-7F10-4783-9E2A-77AC14203581}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STC.Auth.Infrastructure", "src\Infrastructure\STC.Auth.Infrastructure\STC.Auth.Infrastructure.csproj", "{36046093-7F10-4783-9E2A-77AC14203581}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STC.Persistence.EfCore", "src\Infrastructure\STC.Persistence.EfCore\STC.Persistence.EfCore.csproj", "{01BCE295-5904-4272-B459-3906E7796E1C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STC.Auth.Persistence.EfCore", "src\Infrastructure\STC.Auth.Persistence.EfCore\STC.Auth.Persistence.EfCore.csproj", "{01BCE295-5904-4272-B459-3906E7796E1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STC.Auth.WebAPI", "src\Presentation\STC.Auth.WebAPI\STC.Auth.WebAPI.csproj", "{DF1228E2-D529-4439-9E21-0A49058D27D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,7 @@ Global
 		{23D9AE36-B3D4-45D5-8FEC-D02D53270DA5} = {AB322852-FAB3-4ABA-B63E-8B2219F48277}
 		{36046093-7F10-4783-9E2A-77AC14203581} = {A34ADDA3-FB2C-4A37-B660-479BFD4C1396}
 		{01BCE295-5904-4272-B459-3906E7796E1C} = {A34ADDA3-FB2C-4A37-B660-479BFD4C1396}
+		{DF1228E2-D529-4439-9E21-0A49058D27D8} = {B793996F-3C28-4369-9D35-58939215AE35}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F68A27E1-4728-4700-9CB8-F8CF6F0D6E61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -63,5 +66,9 @@ Global
 		{01BCE295-5904-4272-B459-3906E7796E1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01BCE295-5904-4272-B459-3906E7796E1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01BCE295-5904-4272-B459-3906E7796E1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF1228E2-D529-4439-9E21-0A49058D27D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF1228E2-D529-4439-9E21-0A49058D27D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF1228E2-D529-4439-9E21-0A49058D27D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF1228E2-D529-4439-9E21-0A49058D27D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
