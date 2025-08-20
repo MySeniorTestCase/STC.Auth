@@ -8,6 +8,8 @@ public class ResponseGenerator(IResponse response) : IResult
     {
         httpContext.Response.StatusCode = (int)response.StatusCode;
 
-        await httpContext.Response.WriteAsJsonAsync(response);
+        object body = response is IDataResponse<object> dataResponse ? dataResponse : response;
+
+        await httpContext.Response.WriteAsJsonAsync(body);
     }
 }

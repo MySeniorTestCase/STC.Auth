@@ -13,4 +13,7 @@ public class User : IdentityUser
         RefreshToken = refreshToken;
         RefreshTokenExpiryDate = expiryDate;
     }
+
+    public bool IsRefreshTokenValid() =>
+        RefreshTokenExpiryDate.HasValue && RefreshTokenExpiryDate.Value > DateTime.UtcNow;
 }

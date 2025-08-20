@@ -13,7 +13,7 @@ public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User>
         builder.Property(_user => _user.Id).IsRequired().HasColumnOrder(0);
         builder.Property(_user => _user.UserName).IsRequired().HasColumnOrder(1).HasMaxLength(300);
         builder.Property(_user => _user.NormalizedUserName).IsRequired().HasColumnOrder(2).HasMaxLength(300);
-        builder.Property(_user => _user.RefreshToken).IsRequired(false).HasColumnOrder(3).HasMaxLength(100);
+        builder.Property(_user => _user.RefreshToken).IsRequired(false).HasColumnOrder(3).HasMaxLength(300);
         builder.Property(_user => _user.RefreshTokenExpiryDate).IsRequired(false).HasColumnOrder(4);
         builder.Property(_user => _user.SecurityStamp).IsRequired().HasColumnOrder(5).HasMaxLength(100);
     }

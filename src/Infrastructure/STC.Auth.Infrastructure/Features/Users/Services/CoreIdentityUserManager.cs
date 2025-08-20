@@ -29,21 +29,40 @@ public class CoreIdentityUserManager(UserManager<User> userManager) : IUserServi
         return ResponseCreator.Success(message: Messages.UserCreatedSuccessfully, data: user);
     }
 
-    public async ValueTask<IDataResponse<User?>> GetByUserNameAsync(string userName,
+    public async ValueTask<IDataResponse<User>> LoginAsync(string userName, string password,
         CancellationToken cancellationToken)
     {
         User? user = await userManager.FindByNameAsync(userName: userName);
+        if (user is null)
+            return ResponseCreator.Error<User>(message: Messages.UserIsNotFound);
 
-        return user is null
-            ? ResponseCreator.Error<User?>(message: Messages.UserIsNotFound, data: null)
-            : ResponseCreator.Success<User?>(message: string.Empty, data: user);
+        bool isPasswordInvalid = await userManager.CheckPasswordAsync(user: user, password: password) is false;
+        if (isPasswordInvalid)
+            return ResponseCreator.Error<User>(message: Messages.InvalidPassword);
+
+        return ResponseCreator.Success<User>(message: string.Empty, data: user);
+    }
+
+    public async ValueTask<IDataResponse<User>> LoginWithRefreshTokenAsync(string refreshToken,
+        CancellationToken cancellationToken)
+    {
+        User? user = await userManager.Users.FirstOrDefaultAsync(predicate: _user => _user.RefreshToken == refreshToken,
+            cancellationToken: cancellationToken);
+        if (user is null)
+            return ResponseCreator.Error<User>(message: Messages.UserIsNotFound);
+
+        bool isRefreshTokenExpired = user.IsRefreshTokenValid() is false;
+        if (isRefreshTokenExpired)
+            return ResponseCreator.Error<User>(message: Messages.TheRefreshTokenIsExpired);
+
+        return ResponseCreator.Success<User>(message: string.Empty, data: user);
     }
 
     public async ValueTask<IResponse> SetRefreshTokenAsync(User user, string refreshToken, DateTime expiryDate,
         CancellationToken cancellationToken)
     {
         user.SetRefreshToken(refreshToken: refreshToken, expiryDate: expiryDate);
-
+        
         IdentityResult result = await userManager.UpdateAsync(user: user);
 
         return result.Succeeded

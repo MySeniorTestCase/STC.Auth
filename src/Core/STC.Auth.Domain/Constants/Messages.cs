@@ -8,4 +8,7 @@ public static class Messages
     public const string UserNameOrPasswordIsIncorrect = "User name or password is incorrect.";
     public const string RefreshTokenCouldNotBeSaved = "Refresh token could not be saved.";
     public const string UserLoggedInSuccessfully = "User logged in successfully.";
+    public const string InvalidPassword = "Invalid password.";
+    public const string TheRefreshTokenIsExpired = "The refresh token is expired.";
+    public const string InvalidRefreshToken = "Invalid refresh token.";
 }
