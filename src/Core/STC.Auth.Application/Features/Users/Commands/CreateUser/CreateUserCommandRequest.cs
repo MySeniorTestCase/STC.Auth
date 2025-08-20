@@ -1,7 +1,4 @@
 namespace STC.Auth.Application.Features.Users.Commands.CreateUser;
 
-public record CreateUserCommandRequest : IRequest<IDataResponse<CreateUserCommandResponse>>
-{
-    public string Username { get; init; } = null!;
-    public string Password { get; init; } = null!;
-}
+public record CreateUserCommandRequest(string UserName, string Password)
+    : IRequest<IDataResponse<CreateUserCommandResponse>>;

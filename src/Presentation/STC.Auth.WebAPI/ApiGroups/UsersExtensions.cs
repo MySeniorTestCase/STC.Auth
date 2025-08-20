@@ -21,7 +21,7 @@ public static class UsersExtensions
                 })
             .WithName("Add New User");
 
-        group.MapPost("/users/login-with-credentials",
+        group.MapPut("/users/login/credentials",
                 async ([FromBody] LoginUserWithCredentialsQueryRequest request, IMediator mediator,
                     CancellationToken cancellationToken) =>
                 {
@@ -30,7 +30,7 @@ public static class UsersExtensions
                 })
             .WithName("Login User With Credentials");
 
-        group.MapPost("/users/login-with-refresh-token",
+        group.MapPut("/users/login/refresh-token",
                 async ([FromBody] LoginUserWithRefreshTokenQueryRequest request, IMediator mediator,
                     CancellationToken cancellationToken) =>
                 {

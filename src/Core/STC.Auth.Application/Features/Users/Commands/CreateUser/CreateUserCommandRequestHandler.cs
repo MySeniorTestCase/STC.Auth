@@ -10,7 +10,7 @@ public class CreateUserCommandRequestHandler(IUserService userService)
     public async Task<IDataResponse<CreateUserCommandResponse>> Handle(CreateUserCommandRequest request,
         CancellationToken cancellationToken)
     {
-        IDataResponse<User> createUserResult = await userService.CreateAsync(userName: request.Username,
+        IDataResponse<User> createUserResult = await userService.CreateAsync(userName: request.UserName,
             password: request.Password,
             cancellationToken: cancellationToken);
         if (createUserResult.IsSuccess is false)
