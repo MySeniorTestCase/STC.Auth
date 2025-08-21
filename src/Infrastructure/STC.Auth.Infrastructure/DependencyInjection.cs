@@ -20,25 +20,17 @@ public static class DependencyInjection
     {
         services.Configure<JwtSettings>(config: configuration.GetRequiredSection(key: "Auth:JwtSettings"));
 
-        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option =>
-        {
-            IOptions<JwtSettings> jwtSettingsOptions =
-                services.BuildServiceProvider().GetRequiredService<IOptions<JwtSettings>>();
+        IOptions<JwtSettings> jwtSettingsOptions =
+            services.BuildServiceProvider().GetRequiredService<IOptions<JwtSettings>>();
 
-            option.TokenValidationParameters = new TokenValidationParameters
+        Shared.JwtAuthentication.DependencyInjection.AddJwtAuthenticationDependencies(services: services, options:
+            jwtOptions =>
             {
-                ValidateAudience = true,
-                ValidateIssuer = true,
-                ValidateLifetime = true,
-                ValidateIssuerSigningKey = true,
-                ValidIssuer = jwtSettingsOptions.Value.Issuer,
-                ValidAudience = jwtSettingsOptions.Value.Audience,
-                IssuerSigningKey =
-                    new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettingsOptions.Value.SecurityKey)),
-                ClockSkew = TimeSpan.Zero
-            };
-        });
-
+                jwtOptions.SecurityKey = jwtSettingsOptions.Value.SecurityKey;
+                jwtOptions.Audience = jwtSettingsOptions.Value.Audience;
+                jwtOptions.Issuer = jwtSettingsOptions.Value.Issuer;
+            });
+        
         services.AddScoped<IUserTokenService, JwtUserTokenManager>();
 
         return services;

@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STC.Auth.WebAPI", "src\Pres
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STC.Shared.Logger", "STC.Shared\src\Utilities\STC.Shared.Logger\STC.Shared.Logger.csproj", "{8384CD7F-1FCD-4422-B277-48F20BCF3AEC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STC.Shared.JwtAuthentication", "STC.Shared\src\Utilities\STC.Shared.JwtAuthentication\STC.Shared.JwtAuthentication.csproj", "{A3EDB977-AE2D-4112-8FB6-0A0FA25AE98E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,7 @@ Global
 		{01BCE295-5904-4272-B459-3906E7796E1C} = {A34ADDA3-FB2C-4A37-B660-479BFD4C1396}
 		{DF1228E2-D529-4439-9E21-0A49058D27D8} = {B793996F-3C28-4369-9D35-58939215AE35}
 		{8384CD7F-1FCD-4422-B277-48F20BCF3AEC} = {AB322852-FAB3-4ABA-B63E-8B2219F48277}
+		{A3EDB977-AE2D-4112-8FB6-0A0FA25AE98E} = {AB322852-FAB3-4ABA-B63E-8B2219F48277}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F68A27E1-4728-4700-9CB8-F8CF6F0D6E61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -77,5 +80,9 @@ Global
 		{8384CD7F-1FCD-4422-B277-48F20BCF3AEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8384CD7F-1FCD-4422-B277-48F20BCF3AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8384CD7F-1FCD-4422-B277-48F20BCF3AEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3EDB977-AE2D-4112-8FB6-0A0FA25AE98E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3EDB977-AE2D-4112-8FB6-0A0FA25AE98E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3EDB977-AE2D-4112-8FB6-0A0FA25AE98E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3EDB977-AE2D-4112-8FB6-0A0FA25AE98E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\STC.Shared\src\Utilities\STC.Shared.JwtAuthentication\STC.Shared.JwtAuthentication.csproj" />
       <ProjectReference Include="..\..\..\STC.Shared\src\Utilities\STC.Shared.Logger\STC.Shared.Logger.csproj" />
       <ProjectReference Include="..\..\Core\STC.Auth.Application\STC.Auth.Application.csproj" />
     </ItemGroup>
