@@ -1,6 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using STC.Auth.Application.Features.Users.Services;
@@ -10,11 +11,14 @@ using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegiste
 
 namespace STC.Auth.Infrastructure.Features.Users.Services.Tokens;
 
-public class JwtUserTokenManager(IOptions<JwtSettings> jwtSettingsOptions) : IUserTokenService
+public class JwtUserTokenManager(IOptions<JwtSettings> jwtSettingsOptions, ILogger<JwtUserTokenManager> logger)
+    : IUserTokenService
 {
     public async ValueTask<(string Token, DateTime ExpiryDate)> GenerateAccessTokenAsync(User user,
         ICollection<Role> roles, CancellationToken cancellationToken = default)
     {
+        logger.LogInformation(message: "Generating access token with JWT.");
+
         ICollection<Claim> claims =
         [
             new Claim(type: JwtRegisteredClaimNames.UniqueName, user.Id),
@@ -52,12 +56,16 @@ public class JwtUserTokenManager(IOptions<JwtSettings> jwtSettingsOptions) : IUs
 
         string token = new JwtSecurityTokenHandler().WriteToken(token: jwtSecurityToken);
 
+        logger.LogInformation(message: "Access token generated with JWT successfully.");
+
         return await Task.FromResult((Token: token, ExpiryDate: expiryDate));
     }
 
     public async ValueTask<(string Token, DateTime ExpiryDate)> GenerateRefreshTokenAsync(User user,
         CancellationToken cancellationToken = default)
     {
+        logger.LogInformation(message: "Generating refresh token with JWT.");
+
         var symmetricSecurityKey =
             new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettingsOptions.Value.SecurityKey));
 
@@ -73,6 +81,8 @@ public class JwtUserTokenManager(IOptions<JwtSettings> jwtSettingsOptions) : IUs
             signingCredentials: signingCredentials);
 
         string token = new JwtSecurityTokenHandler().WriteToken(token: jwtSecurityToken);
+
+        logger.LogInformation(message: "Refresh token generated with JWT successfully.");
 
         return await Task.FromResult((Token: token,
             ExpiryDate: DateTime.UtcNow.AddMinutes(jwtSettingsOptions.Value.RefreshTokenExpiryTimeAsMinute)));

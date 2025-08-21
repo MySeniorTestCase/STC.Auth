@@ -13,8 +13,14 @@
         "Auth:JwtSettings:SecurityKey": "B2IgOW_rN8oMwr1wVIguILaKwPGrQ10-dvPnmL1-wCA",
         "Auth:JwtSettings:Issuer": "STC.Auth",
         "Auth:JwtSettings:Audience": "STC.Auth",
-        "Auth:JwtSettings:TokenExpiryTimeAsMinute": 1440,
-        "Auth:JwtSettings:RefreshTokenExpiryTimeAsMinute": 43200
+        "Auth:JwtSettings:TokenExpiryTimeAsMinute": "1440",
+        "Auth:JwtSettings:RefreshTokenExpiryTimeAsMinute": "43200",
+        "Logger:ExchangeName": "LogExchange",
+        "Logger:BatchPostingLimit": "200",
+        "Logger:RabbitMq:HostName": "localhost",
+        "Logger:RabbitMq:Port": "5672",
+        "Logger:RabbitMq:UserName": "root",
+        "Logger:RabbitMq:Password": "test1234"
       }
     }
   }
