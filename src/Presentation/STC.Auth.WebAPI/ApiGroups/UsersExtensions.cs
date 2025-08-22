@@ -8,7 +8,7 @@ namespace STC.Auth.WebAPI.ApiGroups;
 
 public static class UsersExtensions
 {
-    public static void MapUsersApi(this IEndpointRouteBuilder app)
+    public static IEndpointRouteBuilder MapUsersApi(this IEndpointRouteBuilder app)
     {
         var group = app.MapGroup(prefix: "/api/users").WithTags("Users");
 
@@ -38,5 +38,7 @@ public static class UsersExtensions
                     return new ResponseGenerator(response: result);
                 })
             .WithName("Login User With Refresh Token");
+
+        return app;
     }
 }

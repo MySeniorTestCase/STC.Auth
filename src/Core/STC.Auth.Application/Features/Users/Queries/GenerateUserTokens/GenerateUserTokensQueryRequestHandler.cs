@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Logging;
 using STC.Auth.Application.Features.Users.Services;
 using STC.Auth.Domain.Constants;
+using STC.Auth.Domain.Roles;
 
 namespace STC.Auth.Application.Features.Users.Queries.GenerateUserTokens;
 
@@ -16,8 +17,16 @@ public class
     {
         logger.LogInformation(message: "User tokens are generating.");
 
+        IDataResponse<Role[]> userRolesResult = await userService.GetRolesByUserAsync(user: request.User,
+            cancellationToken: cancellationToken);
+        if (userRolesResult.IsSuccess is false)
+        {
+            logger.LogError(message: "Fetch User Roles failed. Error: {0}", userRolesResult.Message);
+            return ResponseCreator.Error<GenerateUserTokensQueryResponse>(response: userRolesResult);
+        }
+
         var accessTokenResult = await userTokenService.GenerateAccessTokenAsync(user: request.User,
-            roles: [],
+            roles: userRolesResult.Data!,
             cancellationToken: cancellationToken);
 
         var refreshTokenResult = await userTokenService.GenerateRefreshTokenAsync(user: request.User,

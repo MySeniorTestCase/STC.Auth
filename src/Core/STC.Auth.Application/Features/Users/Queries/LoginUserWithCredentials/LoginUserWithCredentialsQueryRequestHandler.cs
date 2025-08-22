@@ -2,6 +2,7 @@ using Microsoft.Extensions.Logging;
 using STC.Auth.Application.Features.Users.Queries.GenerateUserTokens;
 using STC.Auth.Application.Features.Users.Services;
 using STC.Auth.Domain.Constants;
+using STC.Auth.Domain.Roles;
 using STC.Auth.Domain.Users;
 
 namespace STC.Auth.Application.Features.Users.Queries.LoginUserWithCredentials;
@@ -19,7 +20,7 @@ public class LoginUserWithCredentialsQueryRequestHandler(
         logger.LogInformation(message: "A login request received with credentials.");
 
         IDataResponse<User> canLoginWithCredentialsResult =
-            await userService.LoginAsync(userName: request.Username, password: request.Password,
+            await userService.LoginWithCredentialsAsync(userName: request.Username, password: request.Password,
                 cancellationToken: cancellationToken);
         if (canLoginWithCredentialsResult.IsSuccess is false)
         {

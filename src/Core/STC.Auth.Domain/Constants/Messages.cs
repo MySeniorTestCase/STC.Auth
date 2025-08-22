@@ -11,4 +11,8 @@ public static class Messages
     public const string InvalidPassword = "Invalid password.";
     public const string TheRefreshTokenIsExpired = "The refresh token is expired.";
     public const string InvalidRefreshToken = "Invalid refresh token.";
+    public const string RoleCreatedSuccessfully = "Role created successfully.";
+    public const string RoleIsNotFound = "Role is not found.";
+    public const string TheUserHasNotRoles = "The user has not roles.";
+    public const string SomeRolesAreNotFound = "Some roles are not found.";
 }

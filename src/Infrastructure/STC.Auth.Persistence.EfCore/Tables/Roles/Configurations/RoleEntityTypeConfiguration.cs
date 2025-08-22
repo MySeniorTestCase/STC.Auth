@@ -13,6 +13,5 @@ public class RoleEntityTypeConfiguration : IEntityTypeConfiguration<Role>
         builder.Property(_role => _role.Id).IsRequired().HasColumnOrder(0);
         builder.Property(_role => _role.Name).IsRequired().HasColumnOrder(1);
         builder.Property(_role => _role.NormalizedName).IsRequired().HasColumnOrder(2);
-        builder.Property(_role => _role.ConcurrencyStamp).IsRequired().HasColumnOrder(3);
     }
 }

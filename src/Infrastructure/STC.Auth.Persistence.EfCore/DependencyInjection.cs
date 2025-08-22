@@ -11,7 +11,9 @@ public static class DependencyInjection
     public static IServiceCollection AddEfCorePersistenceDependencies(this IServiceCollection services,
         IConfiguration configuration)
     {
-        services.AddIdentityCore<User>().AddEntityFrameworkStores<AuthDbContext>();
+        services.AddIdentityCore<User>()
+            .AddRoles<Role>()
+            .AddEntityFrameworkStores<AuthDbContext>();
 
         services.AddDbContext<AuthDbContext>(optionsAction: _act =>
             _act.UseNpgsql(connectionString: configuration.GetConnectionString(name: "Database")));

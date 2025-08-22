@@ -37,7 +37,7 @@ public class JwtUserTokenManager(IOptions<JwtSettings> jwtSettingsOptions, ILogg
             if (string.IsNullOrEmpty(roleName))
                 continue;
 
-            claims.Add(new Claim(type: JwtRegisteredClaimNames.MiddleName, value: roleName));
+            claims.Add(new Claim(type: ClaimTypes.Role, value: roleName));
         }
 
         var symmetricSecurityKey =

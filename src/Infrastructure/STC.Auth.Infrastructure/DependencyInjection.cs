@@ -7,7 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using STC.Auth.Application.Features.Roles.Services;
 using STC.Auth.Application.Features.Users.Services;
+using STC.Auth.Infrastructure.Features.Roles.Services;
 using STC.Auth.Infrastructure.Features.Users.Services;
 using STC.Auth.Infrastructure.Features.Users.Services.Tokens;
 using STC.Shared.Logger;
@@ -58,6 +60,7 @@ public static class DependencyInjection
             });
 
         services.AddScoped<IUserService, CoreIdentityUserManager>();
+        services.AddScoped<IRoleService, CoreIdentityRoleManager>();
 
         services.Configure<IdentityOptions>(opt =>
         {

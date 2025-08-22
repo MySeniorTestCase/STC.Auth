@@ -4,6 +4,7 @@ public class CreateUserCommandRequestValidator : AbstractValidator<CreateUserCom
 {
     public CreateUserCommandRequestValidator()
     {
+        RuleFor(x => x.RoleId).NotNull().NotEmpty();
         RuleFor(x => x.UserName).NotNull().NotEmpty();
         RuleFor(x => x.Password).NotNull().NotEmpty();
     }

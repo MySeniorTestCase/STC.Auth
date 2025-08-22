@@ -24,6 +24,6 @@ app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 app.MapOpenApi();
 app.MapScalarApiReference();
 app.UseAuthentication().UseAuthorization();
-app.MapUsersApi();
+app.MapUsersApi().MapRolesApi();
 
 app.Run();

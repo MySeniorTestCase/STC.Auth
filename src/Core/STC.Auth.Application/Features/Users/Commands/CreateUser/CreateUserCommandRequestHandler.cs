@@ -13,7 +13,8 @@ public class CreateUserCommandRequestHandler(IUserService userService, ILogger<C
     {
         logger.LogInformation(message: "A user creation request has been received.");
 
-        IDataResponse<User> createUserResult = await userService.CreateAsync(userName: request.UserName,
+        IDataResponse<User> createUserResult = await userService.CreateAsync(roleId: request.RoleId,
+            userName: request.UserName,
             password: request.Password,
             cancellationToken: cancellationToken);
         if (createUserResult.IsSuccess is false)
