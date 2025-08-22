@@ -8,9 +8,9 @@ public static class RolesExtensions
 {
     public static void MapRolesApi(this IEndpointRouteBuilder app)
     {
-        var group = app.MapGroup(prefix: "/api/roles").WithTags("Roles");
+        var group = app.MapGroup(prefix: "/roles").WithTags("Roles");
 
-        group.MapPost("/roles",
+        group.MapPost("/",
                 async ([FromBody] CreateRoleCommandRequest request, IMediator mediator,
                     CancellationToken cancellationToken) =>
                 {

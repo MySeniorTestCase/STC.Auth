@@ -10,9 +10,9 @@ public static class UsersExtensions
 {
     public static IEndpointRouteBuilder MapUsersApi(this IEndpointRouteBuilder app)
     {
-        var group = app.MapGroup(prefix: "/api/users").WithTags("Users");
+        var group = app.MapGroup(prefix: "users").WithTags("Users");
 
-        group.MapPost("/users",
+        group.MapPost("/",
                 async ([FromBody] CreateUserCommandRequest request, IMediator mediator,
                     CancellationToken cancellationToken) =>
                 {
@@ -21,22 +21,24 @@ public static class UsersExtensions
                 })
             .WithName("Add New User");
 
-        group.MapPut("/users/login/credentials",
+        group.MapPut("/login/credentials",
                 async ([FromBody] LoginUserWithCredentialsQueryRequest request, IMediator mediator,
                     CancellationToken cancellationToken) =>
                 {
                     var result = await mediator.Send(request, cancellationToken: cancellationToken);
                     return new ResponseGenerator(response: result);
                 })
+            .AllowAnonymous()
             .WithName("Login User With Credentials");
 
-        group.MapPut("/users/login/refresh-token",
+        group.MapPut("/login/refresh-token",
                 async ([FromBody] LoginUserWithRefreshTokenQueryRequest request, IMediator mediator,
                     CancellationToken cancellationToken) =>
                 {
                     var result = await mediator.Send(request, cancellationToken: cancellationToken);
                     return new ResponseGenerator(response: result);
                 })
+            .AllowAnonymous()
             .WithName("Login User With Refresh Token");
 
         return app;

@@ -19,10 +19,9 @@ builder.Services.AddApplicationDependencies()
 
 WebApplication app = builder.Build();
 
-
 app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 app.MapOpenApi();
-app.MapScalarApiReference();
+app.MapScalarApiReference(_ => _.Servers = []);
 app.UseAuthentication().UseAuthorization();
 app.MapUsersApi().MapRolesApi();
 
