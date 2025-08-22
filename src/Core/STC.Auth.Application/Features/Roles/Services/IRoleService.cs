@@ -4,5 +4,5 @@ namespace STC.Auth.Application.Features.Roles.Services;
 
 public interface IRoleService
 {
-    Task<IDataResponse<Role>> CreateAsync(string roleName, string[] claims, CancellationToken cancellationToken);
+    Task<IDataResponse<Role>> CreateAsync(string roleName, CancellationToken cancellationToken);
 }

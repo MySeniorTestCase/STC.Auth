@@ -1,5 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using STC.Auth.Application;
+using STC.Auth.Application.Features.Seeds.Services;
 using STC.Auth.Infrastructure;
 using STC.Auth.Persistence.EfCore;
 using STC.Auth.WebAPI.ApiGroups;
@@ -24,5 +26,10 @@ app.MapOpenApi();
 app.MapScalarApiReference(_ => _.Servers = []);
 app.UseAuthentication().UseAuthorization();
 app.MapUsersApi().MapRolesApi();
+
+await app.Services.CreateAsyncScope().ServiceProvider.GetRequiredService<AuthDbContext>().Database.MigrateAsync();
+
+await app.Services.CreateAsyncScope().ServiceProvider.GetRequiredService<ISeedDataService>()
+    .CheckAndAddSeedAsync(cancellationToken: CancellationToken.None);
 
 app.Run();

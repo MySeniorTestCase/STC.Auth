@@ -5,6 +5,5 @@ public class CreateRoleCommandRequestValidator : AbstractValidator<CreateRoleCom
     public CreateRoleCommandRequestValidator()
     {
         RuleFor(x => x.Name).NotNull().NotEmpty();
-        RuleFor(x => x.Claims).NotNull();
     }
 }

@@ -11,7 +11,6 @@ public class CreateRoleCommandRequestHandler(IRoleService roleService)
         CancellationToken cancellationToken)
     {
         IDataResponse<Role> createResult = await roleService.CreateAsync(roleName: request.Name,
-            claims: request.Claims,
             cancellationToken: cancellationToken);
         if (createResult.IsSuccess is false)
             return ResponseCreator.Error<CreateRoleCommandResponse>(response: createResult);

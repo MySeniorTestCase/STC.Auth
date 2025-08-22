@@ -8,8 +8,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using STC.Auth.Application.Features.Roles.Services;
+using STC.Auth.Application.Features.Seeds.Services;
 using STC.Auth.Application.Features.Users.Services;
 using STC.Auth.Infrastructure.Features.Roles.Services;
+using STC.Auth.Infrastructure.Features.Seeds;
 using STC.Auth.Infrastructure.Features.Users.Services;
 using STC.Auth.Infrastructure.Features.Users.Services.Tokens;
 using STC.Shared.Logger;
@@ -32,7 +34,7 @@ public static class DependencyInjection
                 jwtOptions.Audience = jwtSettingsOptions.Value.Audience;
                 jwtOptions.Issuer = jwtSettingsOptions.Value.Issuer;
             });
-        
+
         services.AddScoped<IUserTokenService, JwtUserTokenManager>();
 
         return services;
@@ -41,6 +43,8 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructureDependencies(this IServiceCollection services,
         IConfiguration configuration, ILoggingBuilder loggingBuilder)
     {
+        services.AddScoped<ISeedDataService, SeedDataManager>();
+
         services.AddLoggerDependencies(loggingBuilder: loggingBuilder,
             options: _loggerOpt =>
             {

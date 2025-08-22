@@ -1,0 +1,32 @@
+﻿services:
+  stc.auth:
+    image: stc.auth
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Production"
+      ConnectionStrings__Database: "User ID=postgres;Password=test1234;Host=postgresql;Port=5432;Database=auth;Pooling=true;"
+      Auth__JwtSettings__SecurityKey: "B2IgOW_rN8oMwr1wVIguILaKwPGrQ10-dvPnmL1-wCA"
+      Auth__JwtSettings__Issuer: "STC.Auth"
+      Auth__JwtSettings__Audience: "STC.Auth"
+      Auth__JwtSettings__TokenExpiryTimeAsMinute: "1440"
+      Auth__JwtSettings__RefreshTokenExpiryTimeAsMinute: "43200"
+      Logger__ExchangeName: "LogExchange"
+      Logger__BatchPostingLimit: "200"
+      Logger__RabbitMq__HostName: "rabbitmq"
+      Logger__RabbitMq__Port: "5672"
+      Logger__RabbitMq__UserName: "root"
+      Logger__RabbitMq__Password: "test1234"
+    ports:
+      - 5001:8080
+    volumes:
+      - auth-data:/app
+    networks:
+      - stc-network
+    build:
+      context: .
+      dockerfile: src/Presentation/STC.Auth.WebAPI/Dockerfile
+volumes:
+  auth-data:
+
+networks:
+  stc-network:
+    external: true

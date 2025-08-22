@@ -22,4 +22,8 @@
         <CompilerVisibleProperty Include="MediatR_SourceGenerator_Enabled"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Features\Seeds\" />
+    </ItemGroup>
+
 </Project>

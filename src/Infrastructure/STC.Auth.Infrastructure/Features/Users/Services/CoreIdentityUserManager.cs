@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -137,7 +138,7 @@ public class CoreIdentityUserManager(
             logger.LogWarning(message: "User roles are not found.");
             return ResponseCreator.Error<Role[]>(message: Messages.SomeRolesAreNotFound, data: []);
         }
-        
+
         logger.LogInformation(message: "User roles fetched successfully.");
 
         return ResponseCreator.Success(message: string.Empty, data: roles.ToArray());

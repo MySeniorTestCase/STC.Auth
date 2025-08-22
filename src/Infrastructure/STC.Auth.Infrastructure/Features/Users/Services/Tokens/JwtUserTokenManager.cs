@@ -21,7 +21,7 @@ public class JwtUserTokenManager(IOptions<JwtSettings> jwtSettingsOptions, ILogg
 
         ICollection<Claim> claims =
         [
-            new Claim(type: JwtRegisteredClaimNames.UniqueName, user.Id),
+            new Claim(type: ClaimTypes.NameIdentifier, user.Id),
             new Claim(type: JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
         ];
 

@@ -28,6 +28,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STC.Shared.Logger", "STC.Sh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STC.Shared.JwtAuthentication", "STC.Shared\src\Utilities\STC.Shared.JwtAuthentication\STC.Shared.JwtAuthentication.csproj", "{A3EDB977-AE2D-4112-8FB6-0A0FA25AE98E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A9875212-F455-4A1C-BFE3-B10705B68BC9}"
+	ProjectSection(SolutionItems) = preProject
+		compose.yaml = compose.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

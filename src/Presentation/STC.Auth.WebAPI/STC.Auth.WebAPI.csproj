@@ -17,4 +17,10 @@
       <PackageReference Include="Scalar.AspNetCore.Microsoft" Version="2.6.9" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="..\..\..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+    </ItemGroup>
+
 </Project>
